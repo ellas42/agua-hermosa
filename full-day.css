@@ -1,0 +1,453 @@
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        body {
+            margin: 0;
+            font-family: Poppins, sans-serif;
+        }
+
+        .header {
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: 20px;
+            padding-right: 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            backdrop-filter: blur(0px);
+            transition: backdrop-filter 0.3s ease, background-color 0.3s ease;
+            z-index: 1000;
+        }
+
+        .header.scrolled {
+            backdrop-filter: blur(5px);
+            background-color: #ffffff;
+        }
+
+        .header h1 {
+            text-decoration: none;
+            color: #000000;
+            margin: 0;
+            font-size:xx-large;
+        }
+        .header a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .navbar {
+            display: flex;
+            justify-content: flex-end;
+            background-color: transparent;
+            padding-right: 30px;
+        }
+
+        .navbar a {
+            color: rgb(0, 0, 0);
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .navbar a:hover {
+            color: #7c7c7c;
+        }
+
+        .description {
+            margin-top: 100px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .description h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .description p {
+            font-size: 1.2em;
+            color: #555;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .gallery {
+            display: grid; /* Use grid layout */
+            grid-template-columns: repeat(3, 1fr); /* Create 3 equal-width columns */
+            grid-template-rows: auto; /* Automatically adjust row height */
+            gap: 20px; /* Add spacing between grid items */
+            padding: 20px; /* Add padding around the gallery */
+            justify-items: center; /* Center items horizontally */
+            align-items: center; /* Center items vertically */
+        }
+
+        .gallery-item {
+            text-align: center; /* Center-align text below images */
+        }
+
+        .gallery-item img {
+            width: 100%; /* Make images responsive */
+            max-width: 300px; /* Optional: Limit the maximum width of images */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 10px; /* Optional: Add rounded corners */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+        }
+
+        .gallery-item p {
+            margin-top: 10px;
+            font-size: 1em;
+            color: #333;
+        }
+
+        .details {
+            display: grid; /* Use CSS Grid for layout */
+            grid-template-columns: repeat(3, 1fr); /* Create 3 equal-width columns */
+            gap: 20px; /* Add spacing between columns */
+            margin: 15px auto; /* Center the container and add spacing */
+            max-width: 1200px; /* Limit the width of the container */
+            padding: 20px; /* Add padding around the container */
+        }
+
+        .details-column {
+            border: 1px solid rgb(44, 44, 44); /* Add a black border to each column */
+            padding: 10px; /* Add padding inside each column */
+            text-align: left;
+            border-radius: 10px;;
+        }
+
+        .details-column h2 {
+            font-family: Poppins, sans-serif; /* Use the same font as the rest of the page */
+            font-size: 1.5em; /* Adjust the font size for the headings */
+            text-align: center;
+            margin-bottom: 30px; /* Add spacing below the heading */
+            color: #000; /* Set the text color to black */
+        }
+
+        .details-column ul {
+            list-style-type: disc; /* Use bullet points for the list */
+            padding-left: 20px; /* Add padding to the left for the list */
+            margin: 0; /* Remove default margins */
+        }
+
+        .details-column li {
+            margin-bottom: 10px; /* Add spacing between list items */
+            color: #000; /* Set the text color to black */
+        }
+
+        .carousel-section,
+.carousel-section2 {
+    text-align: center; /* Center-align all content in the section */
+    margin: 50px auto; /* Add spacing around the section */
+}
+
+.carousel-title {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.carousel-subtitle {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.cta-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #333;
+    background-color: #ffffff;
+    border: 1px solid #333;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: poppins, sans-serif;
+}
+
+.cta-btn:hover {
+    background-color: #333;
+    color:#ffffff
+}
+
+.hotel-details {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #333;
+    border-radius: 10px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+.hotel-details.hidden {
+    display: none; /* Hide the details by default */
+}
+
+.hotel-details h2 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.hotel-details ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.hotel-details li {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.hidden {
+    display: none !important; /* Ensure the element is completely hidden */
+}
+
+.follow-up {
+    margin: 40px auto; /* Center horizontally and add vertical spacing */
+    padding: 30px; /* Add padding inside the container */
+    font-family: Poppins, sans-serif; /* Use the Poppins font */
+    font-size: 1.2em; /* Set font size */
+    color: #333; /* Text color */
+    background-color: #ffffff; /* Light background color for contrast */
+    border-radius: 15px; /* Rounded corners */
+    max-width: 600px; /* Restrict the width of the container */
+    text-align: center; /* Center-align the text inside */
+    line-height: 1.6; /* Improve readability */
+}
+
+/* Updated .view-all-btn and .view-less-btn - Line 215 (example placement) */
+.view-all-btn,
+.view-less-btn {
+    margin-top: 15px; /* Add spacing above the button */
+    padding: 12px 25px; /* Adjust padding for better appearance */
+    font-family: Poppins, sans-serif; /* Use the Poppins font */
+    font-size: 1em; /* Adjust font size */
+    color: #fff; /* White text color */
+    background-color: #333; 
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Add hover effects */
+    display: inline-block; /* Ensure buttons are inline */
+}
+
+.view-all-btn:hover,
+.view-less-btn:hover {
+    background-color: #4d4d4d;
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.view-less-btn.hidden {
+    display: none; /* Hide the button by default */
+}
+
+.carousel-container {
+    overflow-x: auto; /* Enable horizontal scrolling */
+    display: flex; /* Use flexbox for horizontal layout */
+    scroll-snap-type: x mandatory; /* Enable snapping to images */
+    -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on mobile */
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px;
+    border: none;
+}
+
+.carousel-container::-webkit-scrollbar {
+    display: none; /* Hide the scrollbar for a cleaner look */
+}
+
+.carousel-track {
+    display: flex; /* Arrange images in a row */
+    gap: 20px; /* Add spacing between images */
+    padding: 10px; /* Add padding around the track */
+}
+
+.carousel-img {
+    width: 300px; /* Set a fixed width for all images */
+    height: 200px; /* Set a fixed height for all images */
+    object-fit: cover; /* Ensure images maintain their aspect ratio */
+    border-radius: 10px; /* Optional: Add rounded corners */
+    scroll-snap-align: center; /* Snap the image to the center when scrolling */
+    border: none;
+}
+
+.carousel-img.center {
+    transform: scale(1.05);
+    filter: brightness(1);
+    z-index: 3;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 5;
+}
+
+.hotel-details.hidden {
+    display: none; /* Hide the details by default */
+}
+
+        .booking-form-container {
+            margin-top: 50px;
+            padding: 40px 20px;
+            border-radius: 10px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            align-items: left;
+        }
+        
+        .booking-form-container h1 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .add-accommodation h3 {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 10px;
+            text-align: left; /* Align text to the left */
+        }
+
+        .radio-options {
+            display: flex; /* Arrange radio buttons in a row */
+            gap: 20px; /* Add spacing between Yes and No options */
+            margin-bottom: 20px; /* Add spacing below the radio buttons */
+            text-align: left; /* Align text to the left */
+        }
+
+        .radio-options label {
+            display: flex;
+            align-items: center; /* Align the radio button and text vertically */
+            gap: 10px; /* Add spacing between the radio button and text */
+            font-size: 1em;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .radio-options input[type="radio"] {
+            transform: scale(1.2); /* Slightly enlarge the radio buttons */
+            margin: 0; /* Remove default margins */
+        }
+
+        .accommodation-options {
+            margin-top: 20px; /* Add spacing above the accommodation options */
+            padding-left: 0; /* Remove unnecessary padding */
+            display: flex; /* Use flexbox for alignment */
+            flex-direction: column; /* Stack items vertically */
+            gap: 15px; /* Add spacing between room options */
+        }
+
+        .accommodation-options.hidden {
+            display: none; /* Hide the container by default */
+        }
+
+        .room-option label {
+            display: flex; /* Use flexbox for alignment */
+            align-items: center; /* Align the radio button and text vertically */
+            gap: 12px; /* Add spacing between the radio button and text */
+            font-size: 1em; /* Adjust font size */
+            color: #555; /* Text color */
+        }
+
+        .room-option input[type="radio"] {
+            margin: 0; /* Remove default margins */
+            align-self: start; /* Align the radio button at the top if text wraps */
+            transform: scale(1.2); /* Slightly enlarge the radio buttons */
+        }
+
+        .accommodation-options label {
+            display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: start;
+        gap: 10px;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        select:focus {
+            border-color: #ccc;
+            outline: none;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        form label {
+            font-size: 1em;
+            color: #555;
+        }
+
+        select,
+        form input,
+        form textarea,
+        form button {
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        form button {
+            background-color: #303030;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        form button:hover {
+            background-color: #555;
+        }
+
+        .book-now-btn {
+            position: fixed; /* Fix the button to the viewport */
+            right: 20px; /* Position it 20px from the right edge */
+            bottom: 20px; /* Position it 20px from the bottom edge */
+            background-color: #333; /* Button background color */
+            color: #fff; /* Button text color */
+            padding: 10px 20px; /* Add padding for better appearance */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Add rounded corners */
+            text-decoration: none; /* Remove underline */
+            font-size: 1em; /* Adjust font size */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+            z-index: 1000; /* Ensure it appears above other elements */
+            cursor: pointer; /* Change cursor to pointer */
+            transition: background-color 0.3s ease; /* Add hover effect */
+        }
+
+        .book-now-btn:hover {
+            background-color: #5c5b5b; /* Darker blue on hover */
+        }
+
