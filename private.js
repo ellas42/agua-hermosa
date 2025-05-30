@@ -12,6 +12,33 @@ window.addEventListener('scroll', () => {
     }
 });
 
+const sliderTrack = document.querySelector('.slider-track');
+const slides = document.querySelectorAll('.gallery-slide');
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
+
+let currentIndex = 0;
+
+function updateSliderPosition() {
+    const slideWidth = slides[0].offsetWidth + 20; // including margin-right
+    sliderTrack.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+}
+
+prevBtn.addEventListener('click', () => {
+    if (currentIndex > 0) {
+        currentIndex--;
+        updateSliderPosition();
+    }
+});
+
+nextBtn.addEventListener('click', () => {
+    if (currentIndex < slides.length - 1) {
+        currentIndex++;
+        updateSliderPosition();
+    }
+});
+
+window.addEventListener('resize', updateSliderPosition);
 
 // Hide the "Book Now" button when the booking form is in view
 const bookNowBtn = document.querySelector('.book-now-btn');
@@ -100,28 +127,37 @@ checkboxes.forEach(checkbox => {
 
 ///////
 
-// Select the buttons and hidden gallery items
-const viewAllBtn = document.querySelector('.view-all-btn');
-const viewLessBtn = document.querySelector('.view-less-btn');
-const hiddenGalleryItems = document.querySelectorAll('.gallery-item.hidden');
+const aboutBtnPrivate = document.getElementById('about-btn-private');
+const aboutBtnStandard = document.getElementById('about-btn-standard');
+const hotelDetailsPrivate = document.getElementById('hotel-details-private'); // For private room
+const hotelDetailsStandard = document.getElementById('hotel-details-standard'); // For standard room
 
-// Function to show all hidden gallery items
-viewAllBtn.addEventListener('click', () => {
-    hiddenGalleryItems.forEach(item => {
-        item.classList.remove('hidden'); // Remove the 'hidden' class to show items
-    });
-    viewAllBtn.classList.add('hidden'); // Hide the "View All" button
-    viewLessBtn.classList.remove('hidden'); // Show the "View Less" button
+// Add a click event listener to the "About" button for the private room
+aboutBtnPrivate.addEventListener('click', () => {
+    // Toggle the "hidden" class on the private room hotel details section
+    hotelDetailsPrivate.classList.toggle('hidden');
+
+    // Change the button text based on visibility
+    if (hotelDetailsPrivate.classList.contains('hidden')) {
+        aboutBtnPrivate.textContent = 'About'; // Reset to "About" when hidden
+    } else {
+        aboutBtnPrivate.textContent = 'Hide Details'; // Change to "Hide Details" when visible
+    }
 });
 
-// Function to hide all gallery items again
-viewLessBtn.addEventListener('click', () => {
-    hiddenGalleryItems.forEach(item => {
-        item.classList.add('hidden'); // Add the 'hidden' class to hide items
-    });
-    viewLessBtn.classList.add('hidden'); // Hide the "View Less" button
-    viewAllBtn.classList.remove('hidden'); // Show the "View All" button
+// Add a click event listener to the "About" button for the standard room
+aboutBtnStandard.addEventListener('click', () => {
+    // Toggle the "hidden" class on the standard room hotel details section
+    hotelDetailsStandard.classList.toggle('hidden');
+
+    // Change the button text based on visibility
+    if (hotelDetailsStandard.classList.contains('hidden')) {
+        aboutBtnStandard.textContent = 'About'; // Reset to "About" when hidden
+    } else {
+        aboutBtnStandard.textContent = 'Hide Details'; // Change to "Hide Details" when visible
+    }
 });
+
 
 
 //////
@@ -163,39 +199,3 @@ document.querySelector('.view-all-btn').addEventListener('click', function () {
     });
     this.style.display = 'none';
 });
-
-
-////
-// Select the "About" buttons and their respective hotel details sections
-const aboutBtnPrivate = document.getElementById('about-btn-private');
-const aboutBtnStandard = document.getElementById('about-btn-standard');
-const hotelDetailsPrivate = document.getElementById('hotel-details-private'); // For private room
-const hotelDetailsStandard = document.getElementById('hotel-details-standard'); // For standard room
-
-// Add a click event listener to the "About" button for the private room
-aboutBtnPrivate.addEventListener('click', () => {
-    // Toggle the "hidden" class on the private room hotel details section
-    hotelDetailsPrivate.classList.toggle('hidden');
-
-    // Change the button text based on visibility
-    if (hotelDetailsPrivate.classList.contains('hidden')) {
-        aboutBtnPrivate.textContent = 'About'; // Reset to "About" when hidden
-    } else {
-        aboutBtnPrivate.textContent = 'Hide Details'; // Change to "Hide Details" when visible
-    }
-});
-
-// Add a click event listener to the "About" button for the standard room
-aboutBtnStandard.addEventListener('click', () => {
-    // Toggle the "hidden" class on the standard room hotel details section
-    hotelDetailsStandard.classList.toggle('hidden');
-
-    // Change the button text based on visibility
-    if (hotelDetailsStandard.classList.contains('hidden')) {
-        aboutBtnStandard.textContent = 'About'; // Reset to "About" when hidden
-    } else {
-        aboutBtnStandard.textContent = 'Hide Details'; // Change to "Hide Details" when visible
-    }
-});
-
-

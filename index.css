@@ -304,6 +304,24 @@ a:visited {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
+.rental-motor .title {
+    font-size: 2.5rem;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+.rental-motor .gallery-item {
+    text-align: center;
+}
+
+.rental-motor .gallery-item img {
+    display: block;
+    margin: 0 auto;
+    box-shadow: none;
+    border: none;
+}
+
 .call-to-action {
     color: #333; /* White text */
     border: 1px solid #333; /* Border color */

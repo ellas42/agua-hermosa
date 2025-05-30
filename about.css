@@ -125,3 +125,26 @@ body {
     border-radius: 10px; /* Optional: Add rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
 }
+
+.footer {
+    background-color: #161616; /* Black background */
+    color: #fff; /* White text color */
+    text-decoration: none;
+    height: 25vh; /* Half the screen height */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items:first baseline; /* Center vertically */
+    text-align: center; /* Center text alignment */
+    margin-top: 50px;
+}
+
+.footer p {
+    font-size: 1.2em; /* Adjust font size */
+    margin: 0; /* Remove default margin */
+    margin-top: 30px;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+}
