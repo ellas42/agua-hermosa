@@ -148,3 +148,126 @@ body {
     color: #fff;
     text-decoration: none;
 }
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 10px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: #fff;
+  }
+  .header h1 {
+    font-size: 2em;
+    margin: 0 0 10px 0;
+    padding: 0;
+  }
+  .header a {
+    font-size: 1em;
+    padding: 0;
+  }
+  .navbar {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background-color: rgba(0,0,0,0.85);
+    backdrop-filter: blur(8px);
+    border-radius: 10px;
+    padding: 15px;
+    gap: 10px;
+    z-index: 1200;
+  }
+  .navbar.show {
+    display: flex;
+  }
+  .navbar a {
+    color: #fff !important;
+    padding: 10px 0;
+    font-size: 1em;
+    text-align: left;
+  }
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 2000;
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+  }
+  .hamburger span {
+    display: block;
+    height: 4px;
+    width: 100%;
+    background: #111;
+    margin: 5px 0;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .hamburger.black span {
+    background: #fff !important;
+  }
+  .title {
+    font-size: 0.8em;
+    margin-top: 100px;
+    margin-bottom: 16px;
+    padding: 0 5px;
+  }
+  .image-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    max-width: 100vw;
+    margin: 10px auto;
+  }
+  .image-container img {
+    width: 95vw;
+    max-width: 400px;
+    margin-bottom: 10px;
+  }
+  .content-container {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    max-width: 100vw;
+  }
+  .description {
+    width: 100%;
+    font-size: 1em;
+    padding: 10px;
+    margin: 10px auto;
+    max-width: 100vw;
+  }
+  .footer {
+    flex-direction: column;
+    height: auto;
+    padding: 20px 10px;
+    margin-top: 0;
+    justify-content: center;
+    align-items: center;
+  }
+  .footer p {
+    font-size: 1em;
+    margin-top: 10px;
+    word-break: break-all;
+  }
+  .footer a {
+    font-size: 1em;
+    margin: 0 2px;
+    word-break: break-all;
+  }
+}

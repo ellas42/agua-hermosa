@@ -102,3 +102,9 @@ carousels.forEach((carousel) => {
         carousel.scrollLeft = scrollLeft - walk;
     });
 });
+
+//hamburger 
+function toggleMenu() {
+  var navbar = document.querySelector('.navbar');
+  navbar.classList.toggle('show');
+}

@@ -1,23 +1,5 @@
 
 
-        const navbar = document.querySelector('.navbar');
-        const links = navbar.querySelectorAll('a');
-      
-        function updateNavbarColor() {
-          const scrollThreshold = 200; // adjust to when you want the switch
-      
-          if (window.scrollY < scrollThreshold) {
-            // On top of the image
-            links.forEach(link => link.style.color = 'white');
-          } else {
-            // After scrolling past image
-            links.forEach(link => link.style.color = 'black');
-          }
-        }
-      
-        window.addEventListener('scroll', updateNavbarColor);
-        window.addEventListener('load', updateNavbarColor);
-
         const viewAllBtn = document.querySelector('.view-all-btn');
         const hiddenItems = document.querySelectorAll('.gallery-item.hidden');
     
@@ -33,3 +15,30 @@
                 viewAllBtn.textContent = 'View All Destinations';
             }
         });
+
+
+       function toggleMenu() {
+    var navbar = document.getElementById('navbar');
+    navbar.classList.toggle('show');
+}
+
+// Function to update the hamburger menu color based on the scroll position
+
+function updateHamburgerColor() {
+    const hamburger = document.querySelector('.hamburger');
+    const destinations = document.querySelector('.destinations');
+    if (!hamburger || !destinations) return;
+
+    // Get the top position of the destinations section relative to the viewport
+    const destTop = destinations.getBoundingClientRect().top;
+
+    // If the top of destinations is at or above the top of the viewport, switch to black
+    if (destTop <= 60) {
+        hamburger.classList.add('black');
+    } else {
+        hamburger.classList.remove('black');
+    }
+}
+
+window.addEventListener('scroll', updateHamburgerColor);
+window.addEventListener('load', updateHamburgerColor);

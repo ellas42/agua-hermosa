@@ -8,15 +8,20 @@
 </head>
 <body>
     <div class="header" id="header">
-        <a href="index.html">
+    <a href="index.html">
         <h1>Agua Hermosa</h1>
-        </a>
-        <div class="navbar">
-            <a href="trip-options.html">Trip Options</a>
-            <a href="wa.me/62123456789">Contact Us</a>
-            <a href="about.html">About</a>
-        </div>
+    </a>
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
     </div>
+    <div class="navbar" id="navbar">
+        <a href="trip-options.html">Trip Options</a>
+        <a href="wa.me/62123456789">Contact Us</a>
+        <a href="about.html">About</a>
+    </div>
+</div>
     <div class="description">
         <h1>Private Trip</h1>
         <br />
@@ -30,10 +35,10 @@
       <div class="product-image">
         <a href="pink.html" target="_blank">
         <img src="pink/2.jpg" alt="Pink Beach">
+        </a>
       </div>
       <div class="product-description">
         <h3>Pink Beach</h3>
-      </a>
       <p>A dreamy shoreline with rare blush-pink sand and crystal-clear waters perfect for snorkeling and sunbathing.</p>
       </div>
     </div>
@@ -41,10 +46,10 @@
       <div class="product-image">
         <a href="padar.html" target="_blank">
         <img src="padar/2.jpg" alt="Padar Island">
+        </a>
       </div>
       <div class="product-description">
         <h3>Padar Island</h3>
-      </a>
       <p>Famous for its dramatic hilltop views of tri-colored bays, Padar offers one of Indonesia’s most iconic photo spots.</p>
       </div>
     </div>
@@ -52,10 +57,10 @@
       <div class="product-image">
         <a href="komodo.html" target="_blank">
         <img src="komodo/1.jpg" alt="Komodo Island">
+        </a>
       </div>
       <div class="product-description">
         <h3>Komodo Island</h3>
-      </a>
       <p>Home to the legendary Komodo dragons, this island blends wild adventure with rugged natural beauty.</p>
       </div>
     </div>
@@ -63,10 +68,10 @@
       <div class="product-image">
         <a href="pink.html" target="_blank">
         <img src="manta/1.jpg" alt="Manta Point">
+        </a>
       </div>
       <div class="product-description">
         <h3>Manta Point</h3>
-      </a>
       <p> A diving and snorkeling paradise where majestic manta rays glide gracefully through the turquoise sea.</p>
       </div>
     </div>
@@ -74,10 +79,10 @@
       <div class="product-image">
         <a href="siaba.html" target="_blank">
         <img src="siaba/2.jpg" alt="Siaba Island">
+        </a>
       </div>
       <div class="product-description">
         <h3>Siaba Island</h3>
-        </a>
         <p>Known as “Turtle City,” Siaba’s calm, shallow reefs make it a snorkeling haven for spotting gentle sea turtles.</p>
       </div>
     </div>
@@ -85,10 +90,10 @@
       <div class="product-image">
         <a href="taka.html" target="_blank">
         <img src="taka/2.jpg" alt="Taka Makassar">
+        </a>
       </div>
       <div class="product-description">
         <h3>Taka Makassar</h3>
-        </a>
         <p>A stunning, tiny sandbar surrounded by vibrant reefs and shallow turquoise water, perfect for drone shots and quick dips.</p>
       </div>
     </div>
@@ -96,10 +101,10 @@
       <div class="product-image">
         <a href="siaba.html" target="_blank">
         <img src="siaba/3.jpg" alt="Sabolo Island">
+        </a>
       </div>
       <div class="product-description">
         <h3>Sabolo Island</h3>
-      </a>
       <p>A peaceful gem with lush greenery and rich marine life, ideal for snorkeling or just soaking in the serenity.</p>
       </div>
     </div>
@@ -107,10 +112,10 @@
       <div class="product-image">
         <a href="kelor.html" target="_blank">
         <img src="kelor/2.jpg" alt="Kelor Island">
+        </a>
       </div>
       <div class="product-description">
         <h3>Kelor Island</h3>
-        </a>
         <p>A small, hilly island offering a short hike to panoramic views and soft-sand beaches for quiet escapes.</p>
       </div>
     </div>
@@ -118,10 +123,10 @@
       <div class="product-image">
         <a href="kanawa.html" target="_blank">
         <img src="kanawa/1.jpg" alt="Kanawa Island">
+        </a>
       </div>
       <div class="product-description">
         <h3>Kanawa Island</h3>
-        </a>
         <p>A tranquil getaway with clear water, thriving coral reefs, and relaxing vibes both above and below the surface.</p>
       </div>
     </div>
@@ -129,10 +134,10 @@
       <div class="product-image">
         <a href="bidadari.html" target="_blank">
         <img src="bidadari/1.jpg" alt="Bidadari Island">
+        </a>
       </div>
       <div class="product-description">
         <h3>Bidadari Island</h3>
-        </a>
         <p> Often called “Angel Island,” this scenic spot is perfect for a day trip with white sands and calm waters great for swimming.</p>
       </div>
     </div>
@@ -234,10 +239,20 @@
         </div>
     </div>
 
+    <div class="rental-motor" id="rental-motor">
+        <h1 class="title">Don't Forget The Bike!</h1>
+        <div class ="rental-motor-gallery">
+            <div class="gallery-item">
+                <img src="motorbike-removebg-preview.png" alt="motorbike">
+                <h3>Rent for 100k IDR/Day</h3>
+            </div>
+        </div>
+    </div>
+
 
     <div class="booking-form-container" id="booking">
         <h1>Book Now</h1>
-        <form id="booking-form" action="send-booking.php" method="POST">
+        <form id="booking-form" action="https://agua-hermosa.com/send-booking.php" method="POST">
             <div class="add-destinations">
                 <h3>Do you want to add more destinations?</h3>
                 <div class="radio-options">
@@ -327,7 +342,7 @@
     <a href="#booking" class="book-now-btn">Book Now</a>
 
     <footer class="footer">
-        <p><a href="index.html">Agua Hermosa,</a> <a href="https://maps.app.goo.gl/1GZpcKb33c3Gn84K9">Kabupaten Manggarai Barat, East Nusa Tenggara, Indonesia.,</a> <a href="wa.me/62123456789">+62 1234-4567-8901,</a> <a href="mailto:aguahermosabajo@gmail.com">aguahermosabajo@gmail.com.</a></p>
+        <p><a href="index.html">Agua Hermosa,</a> <a href="https://maps.app.goo.gl/1GZpcKb33c3Gn84K9">Kabupaten Manggarai Barat, East Nusa Tenggara, Indonesia.,</a> <a href="wa.me/6285121933255">+62 851-2193-3255,</a> <a href="mailto:aguahermosabajo@gmail.com">aguahermosabajo@gmail.com.</a></p>
     </footer>
 
 
