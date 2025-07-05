@@ -16,8 +16,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Handle additional destinations
     $additional = isset($_POST['additional-destinations']) ? implode(", ", array_map('htmlspecialchars', $_POST['additional-destinations'])) : 'None';
 
-    $to = "aguahermosabajo@gmail.com"; 
-    $subject = "New Booking Request from $name";
+    $to = "ellalianaa06@gmail.com"; 
+    $subject = "Agua Hermosa -- New Booking Request from $name";
 
     $message = "
         Name: $name\n
