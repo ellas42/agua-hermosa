@@ -1,4 +1,7 @@
-// Hide the "Book Now" button when the booking form is in view
+document.addEventListener('DOMContentLoaded', function () {
+
+
+    // Hide the "Book Now" button when the booking form is in view
 const bookNowBtn = document.querySelector('.book-now-btn');
 const bookingForm = document.querySelector('.booking-form-container');
 
@@ -108,3 +111,22 @@ function toggleMenu() {
   var navbar = document.querySelector('.navbar');
   navbar.classList.toggle('show');
 }
+
+
+  // Bike rental show/hide logic
+  const bikeRadios = document.querySelectorAll('input[name="add-motorbike"]');
+  const bikeCountOptions = document.querySelector('.bike-count-options');
+
+  bikeRadios.forEach(radio => {
+    radio.addEventListener('change', function () {
+      if (this.value === 'yes') {
+        bikeCountOptions.classList.remove('hidden');
+        bikeCountOptions.querySelector('input').required = true;
+      } else {
+        bikeCountOptions.classList.add('hidden');
+        bikeCountOptions.querySelector('input').required = false;
+        bikeCountOptions.querySelector('input').value = '';
+      }
+    });
+  });
+});

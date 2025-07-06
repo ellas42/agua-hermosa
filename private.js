@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function () {
             this.style.display = 'none';
         });
     }
-});
+
 
 
 //hamburger
@@ -173,3 +173,4 @@ function toggleMenu() {
   var navbar = document.querySelector('.navbar');
   navbar.classList.toggle('show');
 }
+});
