@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fromEmail = "noreply@agua-hermosa.com";
 
     // Check if this is a full day trip (NO add-destinations field) or private trip (HAS add-destinations field)
-    $isFullDayTrip = !isset($_POST['add']) || empty($_POST['add']);
+    $isFullDayTrip = !isset($_POST['add']);
     
     if ($isFullDayTrip) {
         // FULL DAY TRIP BOOKING
