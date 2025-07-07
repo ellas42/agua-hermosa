@@ -47,7 +47,7 @@ const hotelDetailsStandard = document.getElementById('hotel-details-standard'); 
 aboutBtnPrivate.addEventListener('click', () => {
     // Toggle the "hidden" class on the private room hotel details section
     hotelDetailsPrivate.classList.toggle('hidden');
-
+    
     // Change the button text based on visibility
     if (hotelDetailsPrivate.classList.contains('hidden')) {
         aboutBtnPrivate.textContent = 'About'; // Reset to "About" when hidden
