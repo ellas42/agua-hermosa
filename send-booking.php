@@ -12,24 +12,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $domain = "agua-hermosa.com";
     $fromEmail = "noreply@agua-hermosa.com";
 
-    // Check if this is a full day trip (NO add-destinations field) or private trip (HAS add-destinations field)
+    // LOGIC: Full Day Trip = NO 'add' field; Private Trip = HAS 'add' field
     $isFullDayTrip = !isset($_POST['add']);
-    
+
     if ($isFullDayTrip) {
         // FULL DAY TRIP BOOKING
-        
-        // Handle additional destinations
-        $addDestinations = isset($_POST['add']) ? implode(", ", array_map('htmlspecialchars', $_POST['add'])) : 'None selected';
-        
-        // Handle accommodation
+
+        // These fields are not relevant for Full Day Trip, but keep for consistency
+        $addDestinations = 'Not applicable';
         $addAccommodation = isset($_POST['add-accommodation']) ? htmlspecialchars($_POST['add-accommodation']) : 'No response';
         $roomType = isset($_POST['room-type']) ? htmlspecialchars($_POST['room-type']) : 'None selected';
-        
-        // Handle motorbike rental
         $addMotorbike = isset($_POST['add-motorbike']) ? htmlspecialchars($_POST['add-motorbike']) : 'No response';
 
         $subject = "Agua Hermosa - Full Day Trip Booking from " . $name;
-        
+
         $message = "
         <html>
         <head>
@@ -63,10 +59,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <td>$adults</td>
                 </tr>
                 <tr>
-                    <td><strong>Additional Destinations:</strong></td>
-                    <td>$addDestinations</td>
-                </tr>
-                <tr>
                     <td><strong>Add Accommodation:</strong></td>
                     <td>$addAccommodation</td>
                 </tr>
@@ -90,16 +82,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     } else {
         // PRIVATE TRIP BOOKING
-        
-        // Handle accommodation (same as full day)
+
+        // Handle additional destinations
+        $addDestinations = isset($_POST['add']) ? implode(", ", array_map('htmlspecialchars', $_POST['add'])) : 'None selected';
         $addAccommodation = isset($_POST['add-accommodation']) ? htmlspecialchars($_POST['add-accommodation']) : 'No response';
         $roomType = isset($_POST['room-type']) ? htmlspecialchars($_POST['room-type']) : 'None selected';
-        
-        // Handle motorbike rental (same as full day)
         $addMotorbike = isset($_POST['add-motorbike']) ? htmlspecialchars($_POST['add-motorbike']) : 'No response';
 
         $subject = "Agua Hermosa - Private Trip Booking from " . $name;
-        
+
         $message = "
         <html>
         <head>
@@ -131,6 +122,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <tr>
                     <td><strong>Number of Adults:</strong></td>
                     <td>$adults</td>
+                </tr>
+                <tr>
+                    <td><strong>Additional Destinations:</strong></td>
+                    <td>$addDestinations</td>
                 </tr>
                 <tr>
                     <td><strong>Add Accommodation:</strong></td>
