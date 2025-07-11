@@ -13,14 +13,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $domain = "agua-hermosa.com";
     $fromEmail = "noreply@agua-hermosa.com";
 
-    // Check if this is a full day trip (has add-destinations field) or private trip
-    $isFullDayTrip = isset($_POST['trip-type']) && $_POST['trip-type'] === 'full-day';
+    // Check if this is a full day trip or private trip
+    $tripType = isset($_POST['trip-type']) ? $_POST['trip-type'] : '';
+    $isFullDayTrip = ($tripType === 'full-day');
+    $isPrivateTrip = ($tripType === 'private');
     
     if ($isFullDayTrip) {
         // FULL DAY TRIP BOOKING
-        
-        // Handle additional destinations
-        $addDestinations = isset($_POST['add']) ? implode(", ", array_map('htmlspecialchars', $_POST['add'])) : 'None selected';
         
         // Handle accommodation
         $addAccommodation = isset($_POST['add-accommodation']) ? htmlspecialchars($_POST['add-accommodation']) : 'No response';
@@ -85,15 +84,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </html>
         ";
 
-    } else {
+    } elseif ($isPrivateTrip) {
         // PRIVATE TRIP BOOKING
         $addDestinations = isset($_POST['add']) ? implode(", ", array_map('htmlspecialchars', $_POST['add'])) : 'None selected';
         
-        // Handle accommodation (same as full day)
+        // Handle accommodation
         $addAccommodation = isset($_POST['add-accommodation']) ? htmlspecialchars($_POST['add-accommodation']) : 'No response';
         $roomType = isset($_POST['room-type']) ? htmlspecialchars($_POST['room-type']) : 'None selected';
         
-        // Handle motorbike rental (same as full day)
+        // Handle motorbike rental
         $addMotorbike = isset($_POST['add-motorbike']) ? htmlspecialchars($_POST['add-motorbike']) : 'No response';
 
         $subject = "Agua Hermosa - Private Trip Booking from " . $name;
@@ -155,6 +154,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </body>
         </html>
         ";
+    } else {
+        // Fallback for unknown trip type
+        $subject = "Agua Hermosa - Booking Request from " . $name;
+        $message = "
+        <html>
+        <head>
+            <title>Booking Request</title>
+        </head>
+        <body>
+            <h2>Booking Request - Agua Hermosa</h2>
+            <p><strong>Error:</strong> Unknown trip type received: " . htmlspecialchars($tripType) . "</p>
+            <p><strong>Name:</strong> $name</p>
+            <p><strong>Email:</strong> $email</p>
+            <p><strong>Phone:</strong> $phone</p>
+            <p><strong>Date:</strong> $date</p>
+            <p><strong>Adults:</strong> $adults</p>
+            <p><strong>Note:</strong> $note</p>
+        </body>
+        </html>
+        ";
     }
 
     // Common headers for both trip types
@@ -169,7 +188,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $headers .= "Message-ID: <" . time() . rand(1, 1000) . "@" . $domain . ">" . "\r\n";
 
     if (mail($to, $subject, $message, $headers)) {
-        $tripTypeName = $isFullDayTrip ? 'Full Day Trip' : 'Private Trip';
+        $tripTypeName = $isFullDayTrip ? 'Full Day Trip' : ($isPrivateTrip ? 'Private Trip' : 'Trip');
         echo "<script>
             alert('Thank you! Your $tripTypeName booking request has been submitted.');
             window.location.href = 'index.html';
