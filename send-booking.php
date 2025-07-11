@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fromEmail = "noreply@agua-hermosa.com";
 
     // Check if this is a full day trip (has add-destinations field) or private trip
-    $isFullDayTrip = isset($_POST['add']) && !empty($_POST['add']);
+    $isFullDayTrip = !isset($_POST['add']);
     
     if ($isFullDayTrip) {
         // FULL DAY TRIP BOOKING
@@ -63,10 +63,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <td>$adults</td>
                 </tr>
                 <tr>
-                    <td><strong>Additional Destinations:</strong></td>
-                    <td>$addDestinations</td>
-                </tr>
-                <tr>
                     <td><strong>Add Accommodation:</strong></td>
                     <td>$addAccommodation</td>
                 </tr>
@@ -90,6 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     } else {
         // PRIVATE TRIP BOOKING
+        $addDestinations = isset($_POST['add']) ? implode(", ", array_map('htmlspecialchars', $_POST['add'])) : 'None selected';
         
         // Handle accommodation (same as full day)
         $addAccommodation = isset($_POST['add-accommodation']) ? htmlspecialchars($_POST['add-accommodation']) : 'No response';
@@ -131,6 +128,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <tr>
                     <td><strong>Number of Adults:</strong></td>
                     <td>$adults</td>
+                </tr>
+                <tr>
+                    <td><strong>Additional Destinations:</strong></td>
+                    <td>$addDestinations</td>
                 </tr>
                 <tr>
                     <td><strong>Add Accommodation:</strong></td>
