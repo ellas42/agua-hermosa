@@ -1,4 +1,5 @@
 <?php
+file_put_contents('debug.txt', print_r($_POST, true));
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Common fields for both trip types
     $name = htmlspecialchars($_POST['name']);
