@@ -1,5 +1,7 @@
 <?php
-file_put_contents('debug.txt', print_r($_POST, true));
+// Enhanced debugging
+file_put_contents('debug.txt', "=== NEW SUBMISSION ===\n" . date('Y-m-d H:i:s') . "\n" . print_r($_POST, true) . "\n\n", FILE_APPEND);
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Common fields for both trip types
     $name = htmlspecialchars($_POST['name']);
@@ -13,13 +15,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $domain = "agua-hermosa.com";
     $fromEmail = "noreply@agua-hermosa.com";
 
-    // Check if this is a full day trip or private trip
-    $tripType = isset($_POST['trip-type']) ? $_POST['trip-type'] : '';
+    // Get trip type - be more flexible
+    $tripType = isset($_POST['trip-type']) ? $_POST['trip-type'] : 'unknown';
+    
+    // Log the trip type for debugging
+    file_put_contents('debug.txt', "Trip type detected: " . $tripType . "\n", FILE_APPEND);
+    
+    // Determine trip type more flexibly
     $isFullDayTrip = ($tripType === 'full-day');
-    $isPrivateTrip = ($tripType === 'private');
     
     if ($isFullDayTrip) {
         // FULL DAY TRIP BOOKING
+        file_put_contents('debug.txt', "Processing as FULL DAY TRIP\n", FILE_APPEND);
         
         // Handle accommodation
         $addAccommodation = isset($_POST['add-accommodation']) ? htmlspecialchars($_POST['add-accommodation']) : 'No response';
@@ -84,8 +91,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </html>
         ";
 
-    } elseif ($isPrivateTrip) {
-        // PRIVATE TRIP BOOKING
+    } else {
+        // PRIVATE TRIP BOOKING (default for anything that's not full-day)
+        file_put_contents('debug.txt', "Processing as PRIVATE TRIP\n", FILE_APPEND);
+        
         $addDestinations = isset($_POST['add']) ? implode(", ", array_map('htmlspecialchars', $_POST['add'])) : 'None selected';
         
         // Handle accommodation
@@ -107,7 +116,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <table border='1' cellpadding='10' cellspacing='0' style='border-collapse: collapse;'>
                 <tr>
                     <td><strong>Trip Type:</strong></td>
-                    <td>Private Trip</td>
+                    <td>Private Trip (detected: $tripType)</td>
                 </tr>
                 <tr>
                     <td><strong>Name:</strong></td>
@@ -154,26 +163,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </body>
         </html>
         ";
-    } else {
-        // Fallback for unknown trip type
-        $subject = "Agua Hermosa - Booking Request from " . $name;
-        $message = "
-        <html>
-        <head>
-            <title>Booking Request</title>
-        </head>
-        <body>
-            <h2>Booking Request - Agua Hermosa</h2>
-            <p><strong>Error:</strong> Unknown trip type received: " . htmlspecialchars($tripType) . "</p>
-            <p><strong>Name:</strong> $name</p>
-            <p><strong>Email:</strong> $email</p>
-            <p><strong>Phone:</strong> $phone</p>
-            <p><strong>Date:</strong> $date</p>
-            <p><strong>Adults:</strong> $adults</p>
-            <p><strong>Note:</strong> $note</p>
-        </body>
-        </html>
-        ";
     }
 
     // Common headers for both trip types
@@ -187,17 +176,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $headers .= "X-MSMail-Priority: Normal" . "\r\n";
     $headers .= "Message-ID: <" . time() . rand(1, 1000) . "@" . $domain . ">" . "\r\n";
 
+    // Log email attempt
+    file_put_contents('debug.txt', "Attempting to send email with subject: " . $subject . "\n", FILE_APPEND);
+
     if (mail($to, $subject, $message, $headers)) {
-        $tripTypeName = $isFullDayTrip ? 'Full Day Trip' : ($isPrivateTrip ? 'Private Trip' : 'Trip');
+        $tripTypeName = $isFullDayTrip ? 'Full Day Trip' : 'Private Trip';
+        file_put_contents('debug.txt', "Email sent successfully!\n", FILE_APPEND);
         echo "<script>
             alert('Thank you! Your $tripTypeName booking request has been submitted.');
             window.location.href = 'index.html';
         </script>";
     } else {
+        file_put_contents('debug.txt', "Email failed to send!\n", FILE_APPEND);
         echo "<script>
             alert('Sorry, there was an error submitting your booking. Please try again.');
             window.location.href = 'index.html';
         </script>";
     }
+} else {
+    file_put_contents('debug.txt', "Not a POST request\n", FILE_APPEND);
 }
 ?>
